@@ -16,7 +16,7 @@
                 <h3 class="text-center">Soal</h3>
                 <?php if(!empty($soal->file)): ?>
                     <div class="w-50">
-                        <?= tampil_media('uploads/bank_soal/'.$soal->file); ?>
+                        <?= tampil_media('./uploads/'.$soal->file); ?>
                     </div>
                 <?php endif; ?>
                 <?=$soal->soal?>

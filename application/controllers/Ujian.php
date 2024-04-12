@@ -218,7 +218,7 @@ class Ujian extends CI_Controller {
 		$this->output_json($list, false);
 	}
 	
-	public function list()
+	public function lizt()
 	{
 		$this->akses_mahasiswa();
 
@@ -273,6 +273,8 @@ class Ujian extends CI_Controller {
 
 	public function index()
 	{
+		// print_r('TEST');
+		// exit();
 
 		$this->akses_mahasiswa();
 		$key = $this->input->get('key', true);
@@ -373,7 +375,7 @@ class Ujian extends CI_Controller {
 		$no = 1;
 		if (!empty($soal_urut_ok)) {
 			foreach ($soal_urut_ok as $s) {
-				$path = 'uploads/bank_soal/';
+				$path = './uploads/';
 				$vrg = $arr_jawab[$s->id_soal]["r"] == "" ? "N" : $arr_jawab[$s->id_soal]["r"];
 				$html .= '<input type="hidden" name="id_soal_'.$no.'" value="'.$s->id_soal.'">';
 				$html .= '<input type="hidden" name="rg_'.$no.'" id="rg_'.$no.'" value="'.$vrg.'">';
@@ -472,6 +474,8 @@ class Ujian extends CI_Controller {
 		$nilai = ($jumlah_benar / $jumlah_soal)  * 100;
 		$nilai_bobot = ($total_bobot / $jumlah_soal)  * 100;
 
+		
+
 		$d_update = [
 			'jml_benar'		=> $jumlah_benar,
 			'nilai'			=> number_format(floor($nilai), 0),
@@ -479,10 +483,68 @@ class Ujian extends CI_Controller {
 			'status'		=> 'N'
 		];
 
-		
 
 		$this->master->update('h_ujian', $d_update, 'id', $id_tes);
 		$this->output_json(['status'=>TRUE, 'data'=>$d_update, 'id'=>$id_tes]);
 	}
+
+
+	public function logjawaban(){
+        
+				// drypt id 
+        $id_tes = $this->input->post('id', true);
+        $id_tes = $this->encryption->decrypt($id_tes);
+
+        // $ujian = $this->ujian->getUjianById($id_tes);
+				$log = $this->ujian-> getLogujian('', $id_tes);
+				// print_r($log);
+				$dhistori = $this->ujian->getLogujian('');
+				// print_r($dhistori);
+				// Get hasil jawaban
+				$html = '';
+				$no = 1 ;
+				// print_r($html);
+
+				// $markedLogicalAnswers = [];
+
+				// make a foreach statement for True dan false untuk logjawaban
+				
+			// 	foreach ($dhistori as $jawaban_item) {
+			// 		// Panggil model untuk menyimpan jawaban
+			// 		// $this->ujian->getLogujian('');
+	
+			// 		// Cek jawaban benar atau salah
+			// 		$cekstatus = $this->ujian->getJawaban($jawaban_item);
+	
+			// 		// Jika jawaban benar, ubah status menjadi benar, sebaliknya
+			// 		if ($cekstatus) {
+			// 				$this->ujian->getLogujian($jawaban_item, 'benar');
+			// 		} else {
+			// 				$this->ujian->getLogujian($jawaban_item, 'salah');
+			// 		} 
+
+			// }
+				
+
+	
+
+
+				
+				// kirim data nilai dahulu
+        $data = [
+            // 'ujian' => $ujian,
+            // 'log' => $log,
+						// 'markedLogicalAnswers' => $markedLogicalAnswers,
+						'hasil' => $dhistori,
+						'user' => $this->user,
+						'mhs'		=> $this->mhs,
+						'judul'		=> 'Ujian',
+						'subjudul'	=> 'Hasil Ujian',
+        ];
+
+        $this->load->view('_templates/topnav/_header.php', $data);
+        $this->load->view('ujian/logujian');
+        $this->load->view('_templates/topnav/_footer.php');
+    }
 
 }

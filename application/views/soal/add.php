@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
                         <div class="form-group col-sm-12">
-                            <label>Atasan (Organisai Unit)</label>
+                            <label>Atasan (Organisasi Unit)</label>
                             <?php if ($this->ion_auth->is_admin()) : ?>
                             <select name="dosen_id" required="required" id="dosen_id" class="select2 form-group" style="width:100% !important">
                                 <option value="" disabled selected>Pilih Dosen</option>

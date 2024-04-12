@@ -132,7 +132,7 @@ class Soal extends CI_Controller {
             "audio/mpeg", "audio/mpg", "audio/mpeg3", "audio/mp3", "audio/x-wav", "audio/wave", "audio/wav",
             "video/mp4", "application/octet-stream"
         ];
-        $config['upload_path']      = FCPATH.'uploads/bank_soal/';
+        $config['upload_path']      = './uploads/';
         $config['allowed_types']    = 'jpeg|jpg|png|gif|mpeg|mpg|mpeg3|mp3|wav|wave|mp4';
         $config['encrypt_name']     = TRUE;
         
@@ -164,7 +164,7 @@ class Soal extends CI_Controller {
 
             $i = 0;
             foreach ($_FILES as $key => $val) {
-                $img_src = FCPATH.'uploads/bank_soal/';
+                $img_src = './uploads/';
                 $getsoal = $this->soal->getSoalById($this->input->post('id_soal', true));
                 
                 $error = '';

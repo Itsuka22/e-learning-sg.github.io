@@ -207,6 +207,7 @@ function simpan() {
 
 function selesai() {
     simpan();
+    alert("Test ting coba");
     ajaxcsrf();
     $.ajax({
         type: "POST",
@@ -222,7 +223,7 @@ function selesai() {
                 // isiKuesioner(id_tes);
                 // alert(id_tes);
                 // window.location.href = base_url + 'kuesioner/isi';
-                window.location.replace(base_url + "kuesioner/isi?id="+id_tes);
+                window.location.replace(base_url + "ujian/logjawaban?=" + id_tes);
                 //  type: "POST",
                 //     url: base_url + "kuesioner/isi",
                 //     data: { id: id_tes },
@@ -241,7 +242,9 @@ function waktuHabis() {
 
 function simpan_akhir() {
     simpan();    
+    alert('testing');
     if (confirm('Yakin ingin mengakhiri tes?')) {
         selesai();
+        window.location.replace(base_url + "ujian/logjawaban?=" + id_soal);
     }
 }

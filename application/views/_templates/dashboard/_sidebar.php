@@ -103,7 +103,7 @@
 			<?php endif; ?>
 			<?php if( $this->ion_auth->in_group('mahasiswa') ) : ?>
 			<li class="<?=$page==='ujian'?"active":""?>">
-				<a href="<?=base_url('ujian/list')?>" rel="noopener noreferrer">
+				<a href="<?=base_url('ujian/lizt')?>" rel="noopener noreferrer">
 					<i class="fa fa-chrome"></i> <span>Ujian</span>
 				</a>
 			</li>
