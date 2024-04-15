@@ -85,14 +85,16 @@
             $.ajax({
                 url: base_url + "ujian/logjawaban/",
                 type: "POST", // Atau GET sesuai kebutuhan
-                data: { action: "logujian" }, // Data yang ingin Anda kirim ke server
+                data: { action: "logujian" },// Data yang ingin kirim ke server
                 success: function(response) {
-                    console.log("Berhasil memanggil fungsi logujian.");
+                    alert("sukses");
+                    window.location.replace(base_url + "kuesioner/isi?id=");
+                    // console.log("Berhasil memanggil fungsi logujian.");
                     // Lakukan lebih banyak pekerjaan di sini sesuai kebutuhan
                 },
                 error: function(xhr, status, error) {
                     console.error("Gagal memanggil fungsi logujian:", error);
-                }
+                } 
             });
         }
 </script>

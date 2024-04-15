@@ -235,3 +235,20 @@ function simpan_akhir() {
     window.location.replace(base_url + "ujian/logjawaban?=" + id_soal);
   }
 }
+
+// function logjawaban() {
+//   $.ajax({
+//     url: base_url + "ujian/logjawaban/",
+//     type: "POST", // Atau GET sesuai kebutuhan
+//     data: { id: id_tes },// Data yang ingin kirim ke server
+//     success: function(response) {
+//         alert("sukses");
+//         window.location.replace(base_url + "kuesioner/isi?id=" + id_tes);
+//         // console.log("Berhasil memanggil fungsi logujian.");
+//         // Lakukan lebih banyak pekerjaan di sini sesuai kebutuhan
+//     },
+//     error: function(xhr, status, error) {
+//         console.error("Gagal memanggil fungsi logujian:", error);
+//     } 
+//   });
+// }
